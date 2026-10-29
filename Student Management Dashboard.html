@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:5000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Management Dashboard</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0; padding: 28px;
+    font-family: Arial, sans-serif;
+    background: #f1f5fb; color: #1e293b;
+}
+header { text-align: center; margin-bottom: 28px; }
+header h1 { color: #1d4ed8; margin-bottom: 8px; }
+header p { color: #64748b; }
+.cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px; max-width: 1100px; margin: auto auto 24px;
+}
+.card, .panel {
+    background: white; padding: 22px; border-radius: 14px;
+    box-shadow: 0 4px 16px #dbe3ef;
+}
+.card h3 { margin: 0 0 12px; color: #64748b; }
+.number { font-size: 30px; font-weight: bold; color: #1d4ed8; }
+.warning { color: #dc2626; }
+.panel { max-width: 1100px; margin: 20px auto; }
+input {
+    padding: 12px; border: 1px solid #cbd5e1;
+    border-radius: 7px; margin: 5px; max-width: 100%;
+}
+button {
+    background: #2563eb; color: white; border: 0;
+    padding: 12px 18px; border-radius: 7px; cursor: pointer;
+}
+button:hover { background: #1d4ed8; }
+table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+th, td { padding: 13px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+th { background: #e8efff; }
+.low { color: #dc2626; font-weight: bold; }
+.search { display: flex; flex-wrap: wrap; align-items: center; }
+.search input { flex: 1; min-width: 180px; }
+.table-wrap { overflow-x: auto; }
+@media (max-width: 650px) {
+    body { padding: 14px; }
+    .cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Student Academic &amp; Attendance</h1>
+    <p>Student Management Dashboard</p>
+</header>
+
+<section class="cards">
+    <div class="card">
+        <h3>Total Students</h3>
+        <div class="number">5</div>
+    </div>
+    <div class="card">
+        <h3>Average Attendance</h3>
+        <div class="number">79.2%</div>
+    </div>
+    <div class="card">
+        <h3>Low Attendance</h3>
+        <div class="number warning">1</div>
+        <small>Below 75%</small>
+    </div>
+</section>
+
+<section class="panel">
+    <h2>➕ Add Student</h2>
+    <form action="http://127.0.0.1:5000/add" method="POST">
+        <input name="roll_no" placeholder="Roll Number" required="">
+        <input name="name" placeholder="Student Name" required="">
+        <input name="branch" placeholder="Branch" required="">
+        <input name="attendance" type="number" placeholder="Attendance %" min="0" max="100" step="0.1" required="">
+        <button type="submit">Add Student</button>
+    </form>
+</section>
+
+<section class="panel">
+    <h2>🔍 Search Student</h2>
+    <form action="http://127.0.0.1:5000/" method="GET" class="search">
+        <input name="q" value="" placeholder="Search by roll number or name">
+        <button type="submit">Search</button>
+        <a href="http://127.0.0.1:5000/" style="margin-left:12px">Show All</a>
+    </form>
+
+    <h2>Student Records</h2>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Branch</th>
+                <th>Attendance</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+            <tr>
+                <td>101</td>
+                <td>Rahul</td>
+                <td>CSE</td>
+                <td>82.0%</td>
+                <td>
+                    
+                        Good
+                    
+                </td>
+            </tr>
+        
+            <tr>
+                <td>102</td>
+                <td>Amal</td>
+                <td>CSE</td>
+                <td>70.0%</td>
+                <td>
+                    
+                        <span class="low">Low Attendance</span>
+                    
+                </td>
+            </tr>
+        
+            <tr>
+                <td>103</td>
+                <td>Devan</td>
+                <td>CSE</td>
+                <td>75.0%</td>
+                <td>
+                    
+                        Good
+                    
+                </td>
+            </tr>
+        
+            <tr>
+                <td>104</td>
+                <td>Arjun</td>
+                <td>CSE</td>
+                <td>79.0%</td>
+                <td>
+                    
+                        Good
+                    
+                </td>
+            </tr>
+        
+            <tr>
+                <td>105</td>
+                <td>Amal</td>
+                <td>CSE</td>
+                <td>90.0%</td>
+                <td>
+                    
+                        Good
+                    
+                </td>
+            </tr>
+        
+        </tbody>
+    </table>
+    </div>
+</section>
+
+
+</body></html>
